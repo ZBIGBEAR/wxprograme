@@ -1,0 +1,10 @@
+<view>
+  职业测试
+</view>
+<view>
+  <image src="http://www.baidu.com/img/bd_logo1.png"></image>
+</view>
+<view>
+  职业兴趣测试(Vocational Interest Tests)是心理测试的一种方法，它可以表明一个人最感兴趣的并最可能从中得到满足的工作是什么，该测试是将个人兴趣与那些在某项工作中较成功的员工的兴趣进行比较。它是用于了解一个人的兴趣方向以及兴趣序列的一项测试。
+</view>
+<button bindtap='beginTest'>开始测试</button>

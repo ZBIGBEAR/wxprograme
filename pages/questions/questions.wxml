@@ -1,0 +1,15 @@
+<view wx:for="{{questions}}" wx:for-item="question" wx:if="{{index==curPage}}">
+  <text>{{question.number}}.{{question.title}}</text>
+  <view wx:for="{{question.selects}}" wx:for-item="select">
+    <text>{{select.tag}}.{{select.content}}</text>
+  </view>
+</view>
+<view wx:if="{{curPage>0}}">
+  <button bindtap='lastPage'>上一页</button>
+</view>
+<view wx:if="{{curPage <3}}">
+  <button bindtap='nextPage'>下一页</button>
+</view>
+<view wx:if="{{curPage ==3}}">
+  <button bindtap='submitTest'>提交</button>
+</view>

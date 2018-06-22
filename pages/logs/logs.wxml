@@ -1,0 +1,16 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view>
+
+<view>
+  {{msg}}
+</view>
+<button bindtap='showMsg'>展示消息</button>
+<view>{{scanMsg}}</view>
+<button bindtap='scanCode'>扫一扫获取基本信息</button>
+<button bindtap='testToast'>测试弹框</button>
+<view>{{aliMsg}}</view>
+<button bindtap='getALITest'>获取阿里云测试数据</button>
