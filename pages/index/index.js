@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../readyTest/readyTest'
     })
   },
   onLoad: function () {
@@ -34,6 +34,8 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
+          console.log("wx.getUserInfo")
+          console.log(res)
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -43,8 +45,15 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
+  getUserInfo: function (e) {
+    wx.request({
+      url: app.baseURL + '/api/',
+      method:'GET',
+      data: { 'xtype': 'userLogin','xdata':e.detail.rawData},
+      success: function (res) {
+        console.log(res)
+      }
+    })
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
