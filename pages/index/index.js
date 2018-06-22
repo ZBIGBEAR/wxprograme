@@ -7,7 +7,9 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    openid: '',
+    session_key: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -16,6 +18,28 @@ Page({
     })
   },
   onLoad: function () {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        console.log("login")
+        console.log(res)
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: app.baseURL+'/api/',
+            data: {
+              'xtype':'login',
+              'xdata': res.code
+            },
+            success:function(res){
+              that.setData({ openid: res.data.openid, session_key: res.data.session_key});
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -46,10 +70,14 @@ Page({
     }
   },
   getUserInfo: function (e) {
+    var data = JSON.parse(e.detail.rawData);
+    data.openid = this.data.openid;
+    data.session_key = this.data.session_key;
+    console.log(data)
     wx.request({
       url: app.baseURL + '/api/',
       method:'GET',
-      data: { 'xtype': 'userLogin','xdata':e.detail.rawData},
+      data: { 'xtype': 'userLogin', 'xdata': data},
       success: function (res) {
         console.log(res)
       }
