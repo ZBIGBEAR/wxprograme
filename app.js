@@ -36,5 +36,6 @@ App({
   globalData: {
     userInfo: null
   },
-  baseURL:'https://www.zjxblog.com/wx'
+  baseURL:'https://www.zjxblog.com/wx',
+  base: 'https://www.zjxblog.com'
 })

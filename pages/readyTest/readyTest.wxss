@@ -1,0 +1,19 @@
+.begintitle{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.readyImg{
+  margin-top: 10px;
+  height: 200px;
+}
+
+.readyDescription{
+  text-indent: 2em;
+}
+
+.beginbtn{
+  margin-top: 20px;
+  width: 180px;
+  background-color: #09bb07;
+}
